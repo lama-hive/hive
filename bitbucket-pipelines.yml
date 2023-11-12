@@ -1,0 +1,18 @@
+image: php:8.2-fpm
+
+pipelines:
+  branches:
+    master:
+      - step:
+          name: Test
+          script:
+            - apt-get update && apt-get install git unzip libzip-dev -y
+            - docker-php-ext-install pdo pdo_mysql
+            - pecl install xdebug && docker-php-ext-enable xdebug
+            - curl -o installer https://getcomposer.org/installer && php installer && rm installer && mv composer.phar /usr/local/bin/composer
+            - mkdir /home/skill && useradd -u $UID -d /home/skill skill && chown skill:skill /home/skill
+            - cd app
+            - export COMPOSER_ALLOW_SUPERUSER=1
+            - composer config github-oauth.github.com $GITHUB_PUBLIC_KEY
+            - composer install
+            - ./vendor/bin/pest

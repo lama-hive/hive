@@ -1,0 +1,17 @@
+## How to run (Windows WSL 2, Linux)
+- docker-compose build --build-arg UID="$(id -u)"
+- docker-compose up or docker-compose up -d
+- in php container
+    - composer config github-oauth.github.com $GITHUB_PUBLIC_KEY
+    - composer install
+- go to http://localhost
+
+## Structure
+- Framework
+    - includes classes, which takes care of the application running, no business logic is allowed there
+- Controller
+    - Controllers representing different URLs
+- Db
+    - Db migrations
+- Template
+    - Twig templates to render responses
