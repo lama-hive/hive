@@ -14,8 +14,8 @@ return [
      */
     'db.host' => 'mysql',
     'db.port' => 3306,
-    'db.name' => 'skill',
+    'db.name' => 'hive',
     'db.username' => 'admin',
-    'db.password' => 'fidorka0',
+    'db.password' => 'hive',
     'db.charset' => 'utf8mb4',
 ];

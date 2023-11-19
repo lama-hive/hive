@@ -10,4 +10,6 @@ RUN pecl install xdebug && docker-php-ext-enable xdebug
 
 RUN curl -o installer https://getcomposer.org/installer && php installer && rm installer && mv composer.phar /usr/local/bin/composer
 
-RUN mkdir /home/skill && useradd -u $UID -d /home/skill skill && chown skill:skill /home/skill
+RUN mkdir /home/hive && useradd -u $UID -d /home/hive hive && chown hive:hive /home/hive
+
+WORKDIR /app
