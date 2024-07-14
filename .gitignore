@@ -12,3 +12,4 @@ auth.json
 
 # Composer instalation
 vendor
+composer.lock
