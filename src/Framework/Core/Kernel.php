@@ -6,6 +6,7 @@ namespace Lamahive\Hive\Framework\Core;
 
 use Exception;
 use Lamahive\Hive\Framework\Core\Exception\BootException;
+use Lamahive\Hive\Framework\Core\Exception\CoreException;
 use Lamahive\Hive\Framework\Filesystem\Exception\FilesystemException;
 use Lamahive\Hive\Framework\Logs\Logger;
 
@@ -25,7 +26,6 @@ class Kernel
 
             $di = new DI();
             $di->register(static::class, $this);
-
             $this->logger = $di->get(Logger::class);
         } catch (Exception $e) {
             $this->crash($e);
@@ -41,8 +41,8 @@ class Kernel
 
         try {
             $this->logger?->exception("An error occurred while booting the application.", $bootException);
-        } catch (FilesystemException $fsException) {
-            $bootException = new BootException("{$fsException->getMessage()} during {$e->getMessage()}", $e->getCode(), $e);
+        } catch (FilesystemException|CoreException $loggerException) {
+            $bootException = new BootException("{$loggerException->getMessage()} during {$e->getMessage()}", $e->getCode(), $e);
         } finally {
             if ($this->debug) {
                 throw $bootException;
