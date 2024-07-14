@@ -8,9 +8,9 @@ use Lamahive\Hive\Framework\Filesystem\Exception\FilesystemException;
 use function mkdir;
 use function fopen;
 
-class Create
+readonly class Create
 {
-    public function __construct(private readonly Root $root) {}
+    public function __construct(private Root $root) {}
 
     /**
      * @param string $path Starting without a slash, ending with a slash

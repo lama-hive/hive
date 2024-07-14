@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Lamahive\Hive\Framework\Filesystem;
 
 use Lamahive\Hive\Framework\Filesystem\Exception\FilesystemException;
+use function fclose;
+use function fwrite;
 
 /**
  * Representation of the file on the filesystem.
@@ -17,7 +19,7 @@ class File
     /**
      * @var resource|null
      */
-    private $resource = null;
+    private $resource;
 
     public function __construct($resource, string $path)
     {
