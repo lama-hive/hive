@@ -40,7 +40,7 @@ class Kernel
         $bootException = new BootException($e->getMessage(), $e->getCode(), $e);
 
         try {
-            $this->logger?->exception("An error occurred while booting the application.", $bootException);
+            $this?->logger->exception("An error occurred while booting the application.", $bootException);
         } catch (FilesystemException|CoreException $loggerException) {
             $bootException = new BootException("{$loggerException->getMessage()} during {$e->getMessage()}", $e->getCode(), $e);
         } finally {
