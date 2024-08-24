@@ -1,0 +1,9 @@
+{
+    "host": "localhost",
+    "user": "root",
+    "password": "",
+    "database": "db_name",
+    "port": 3306,
+    "charset": "utf8",
+    "collation": "utf8_unicode_ci"
+}

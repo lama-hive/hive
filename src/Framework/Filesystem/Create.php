@@ -33,7 +33,7 @@ readonly class Create
     public function file(string $path, string $filename): File
     {
         $fullPath = $this->root->path . $path;
-        $filePath = $fullPath . $filename;
+        $filepath = $fullPath . $filename;
 
         $this->path($path);
 
@@ -42,6 +42,6 @@ readonly class Create
             throw new FilesystemException("Could not create file. Path: $fullPath");
         }
 
-        return new File($resource, $filePath);
+        return new File($resource, $filepath);
     }
 }

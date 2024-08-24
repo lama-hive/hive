@@ -19,7 +19,7 @@ class File
     /**
      * @var resource|null
      */
-    private $resource;
+    protected $resource;
 
     public function __construct($resource, string $path)
     {
@@ -38,21 +38,6 @@ class File
             fclose($this->resource);
 
             $this->resource = null;
-        }
-    }
-
-    /**
-     * @throws FilesystemException
-     */
-    public function write(string $message): void
-    {
-        if ($this->isClosed()) {
-            throw new FilesystemException("File is closed. Path: {$this->path}");
-        }
-
-        $result = fwrite($this->resource, $message);
-        if ($result === false) {
-            throw new FilesystemException("Could not write to file. Path: {$this->path}");
         }
     }
 
