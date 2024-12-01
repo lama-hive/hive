@@ -24,8 +24,11 @@ class Kernel
         try {
             $this->debug = $debug;
 
+            // Create a new DI container and register the kernel instance
             $di = new DI();
             $di->register(static::class, $this);
+
+            // Get the logger instance from the DI container
             $this->logger = $di->get(Logger::class);
         } catch (Exception $e) {
             $this->crash($e);
@@ -33,7 +36,7 @@ class Kernel
     }
 
     /**
-     * @throws BootException|
+     * @throws BootException
      */
     private function crash(Exception $e): void
     {

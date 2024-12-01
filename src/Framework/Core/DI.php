@@ -48,7 +48,7 @@ class DI
     private function load(ReflectionClass $reflection): array
     {
         $constructor = $reflection->getConstructor();
-        $parameters = $constructor->getParameters();
+        $parameters = $constructor ? $constructor->getParameters() : [];
 
         $dependencies = [];
         foreach ($parameters as $parameter) {
