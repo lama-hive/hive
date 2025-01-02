@@ -5,3 +5,7 @@
     - composer config github-oauth.github.com $GITHUB_PUBLIC_KEY
     - composer install
 - go to http://localhost
+
+
+### How to run tests
+- ./vendor/bin/phpunit tests

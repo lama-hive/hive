@@ -15,8 +15,8 @@ readonly class Request
 
     private function parseRequest(): void
     {
-        $this->method = $_SERVER['REQUEST_METHOD'];
-        $this->uri = $_SERVER['REQUEST_URI'];
-        $this->host = $_SERVER['HTTP_HOST'];
+        $this->method = $_SERVER['REQUEST_METHOD'] ?? 'UNKNOWN';
+        $this->uri = $_SERVER['REQUEST_URI'] ?? 'UNKNOWN';
+        $this->host = $_SERVER['HTTP_HOST'] ?? 'UNKNOWN';
     }
 }

@@ -7,7 +7,6 @@ namespace Lamahive\Hive\Framework\Core;
 use Exception;
 use Lamahive\Hive\Framework\Core\Exception\BootException;
 use Lamahive\Hive\Framework\Core\Exception\CoreException;
-use Lamahive\Hive\Framework\Filesystem\Exception\FilesystemException;
 use Lamahive\Hive\Framework\Logs\Logger;
 
 class Kernel
@@ -31,6 +30,7 @@ class Kernel
             // Get the logger instance from the DI container
             $this->logger = $di->get(Logger::class);
         } catch (Exception $e) {
+            echo $e->getMessage();
             $this->crash($e);
         }
     }
